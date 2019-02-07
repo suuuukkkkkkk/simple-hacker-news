@@ -1,0 +1,58 @@
+<section class="link-thread">
+  <header>
+    <h4>
+     <%= render @link %>
+    </h4>
+
+    
+  </header>
+  
+  <% if logged_in? %>
+    <div class="add-comment row">
+      <div class="col-sm-6">
+        <%= form_for :comment, url: link_comments_path(@link) do |u| %>
+          <div class="form-group">
+            <%= u.text_area :body, class: "form-control", placeholder: "comment", rows: 10, required: true %>
+          </div>
+
+          <div class="form-group">
+            <%= u.button "add comment", class: "btn btn-success" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+  
+  <div class="all-comments row">
+    <div class="col-sm-12">
+      <% if @comments.present? %>
+        <h3>
+            Comments
+        </h3>
+      
+      <% @comments.order(created_at: :desc).each do |comment| %>
+        <div class="comment">
+          <p class="comment-owner">
+            <strong>
+              <%= comment.user.username %>
+            </strong>
+
+            <span class="comment-created small">
+              <%= time_ago_in_words(comment.created_at) %> ago
+            </span>
+          </p>
+
+          <p>
+            <%= comment.body %>
+          </p>
+        </div>
+      <% end %>
+      <% else %>
+        <h3>
+          No comments for this news
+        </h3>
+      <% end %>
+    </div>
+  </div>
+  
+</section>

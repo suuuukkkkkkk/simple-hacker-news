@@ -1,0 +1,27 @@
+<section class="new-link">
+  <header>
+    <h1>
+      submit a link
+    </h1>
+  </header>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <%= form_for @link do |u| %>
+        <%= render "extra/errors", object: @link %>
+
+        <div class="form-group">
+          <%= u.text_area :title, required: true, class: "form-control", placeholder: "title(required)", row:10 %>
+        </div>
+
+        <div class="form-group">
+          <%= u.url_field :url, class: "form-control", placeholder: "url(optional)" %>
+        </div>
+        
+        <div class="form-group">
+          <%= u.button :submit, class: "btn btn-success" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

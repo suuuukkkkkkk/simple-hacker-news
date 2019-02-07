@@ -1,0 +1,28 @@
+<div class="link">
+  <div class="title">
+    <%= link.title %>
+
+    <% if link.url? %>
+      <span>
+        ( <%= link_to link.url, (link.url? ? link.url : link) %> )
+      </span>
+    <% end %>
+  </div>
+
+  <div class="metadata">
+    <span class="username">
+       by <%= link.user.username %>
+    </span>
+
+    <span class="time-created">
+      <%= time_ago_in_words(link.created_at) %> ago
+    </span>
+
+    <span class="comment-count">
+      <%= link_to pluralize(link.comment_count, 'comment'), link %>
+    </span>
+
+   
+  </div>
+
+</div>

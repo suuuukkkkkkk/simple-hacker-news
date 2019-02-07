@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>A2</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class="container">
+    <%= render "extra/nav" %>
+    <main>
+      <% if flash[:notice] %>
+        <p class="alert alert-info">
+          <%= flash[:notice] %>
+        </p>
+      <% end %>
+
+      <%= yield %>
+      
+      <%= render "extra/footer" %>
+    </main>
+  </body>
+</html>

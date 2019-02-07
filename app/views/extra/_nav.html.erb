@@ -1,0 +1,26 @@
+<header>
+  <nav>
+    <div class="logo">
+    <%= image_tag("image.jpg", :alt => "rmit",:size => "30x30") %> 
+    <%= link_to "RMIT news", root_path, class: "logo" %>
+    </div>
+    
+    <div class="navlinks">
+      <%= link_to "home", root_path %>
+      <%= link_to "comments", n_c_path %>
+      <% if logged_in? %>
+        <%= link_to "submit", l_n_path %>
+      <% else %>
+        <%= link_to "submit", login_a_path ,notice: ' add link successfully ' %>
+        
+      <% end %>
+      <% unless logged_in? %>
+        <%= link_to "login", login_a_path %>
+      <% end %>
+
+      <% if logged_in? %>
+        <%= link_to "logout", sessions_path, method: :delete %>
+      <% end %>
+    </div>
+  </nav>
+</header>
